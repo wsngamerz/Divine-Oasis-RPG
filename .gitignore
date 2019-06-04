@@ -12,3 +12,6 @@ divine oasis tree diagram.xml
 # Coverage
 .coverage
 coverage.xml
+
+# Divine Oasis
+data/

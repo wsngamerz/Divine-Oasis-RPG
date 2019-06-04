@@ -8,7 +8,63 @@
 #    By wsngamerz
 # -------------------
 
+import json
+import logging
+import os
+import shutil
+
 
 class Config:
     def __init__(self):
-        pass
+        self.logger = logging.getLogger(__name__)
+        self.config = None
+
+        # Directories
+        self.application_root = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+        self.data_directory = os.path.join(self.application_root, "data")
+        self.config_location = os.path.join(self.data_directory, "config.json")
+
+        self.load()
+
+    def locate(self):
+        self.logger.debug("Trying to find config file")
+
+        try:
+            with open(self.config_location) as config_file:
+                self.logger.debug("Config file found")
+                config_file.close()
+
+            return True
+        except FileNotFoundError as error:
+            self.logger.debug("Existing config file not found")
+            self.logger.debug("Moving template configuration")
+
+            try:
+                if not os.path.exists(self.data_directory):
+                    os.makedirs(self.data_directory)
+
+                template_config = os.path.join(self.application_root, "divineoasis", "assets", "config.default.json")
+                shutil.copyfile(template_config, self.config_location)
+
+                return True
+            except Exception as error:
+                self.logger.error(error.strerror)
+                return False
+
+    def load(self):
+        self.logger.info("Loading Configuration")
+        self.logger.debug(f"Application Directory: { self.application_root }")
+        self.logger.debug(f"       Data Directory: { self.data_directory }")
+        self.logger.debug(f" Config File Location: { self.config_location }")
+
+        if self.locate():
+            with open(self.config_location, "r") as config_file:
+                self.logger.debug("Loading config file in memory")
+                self.config = json.loads(config_file.read())
+                self.logger.debug("Loaded config file in memory")
+        else:
+            self.config_file = None
+            self.logger.error("Config file missing")
+
+    def get(self, path):
+        self.logger.debug(f"Getting { path } from config")
