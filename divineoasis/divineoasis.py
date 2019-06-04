@@ -8,15 +8,14 @@
 #    By wsngamerz
 # -------------------
 
+from divineoasis.assets import Assets
+from divineoasis.config import Config
+
 
 class DivineOasis:
     def __init__(self):
-        pass
+        self.config = Config()
+        self.assets = Assets()
 
     def start(self):
-        pass
-
-
-if __name__ == "__main__":
-    divineOasis = DivineOasis()
-    divineOasis.start()
+        print("Starting Divine Oasis")

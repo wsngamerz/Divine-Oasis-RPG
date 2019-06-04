@@ -8,3 +8,7 @@ __pycache__/
 
 # Tree Diagram
 divine oasis tree diagram.xml
+
+# Coverage
+.coverage
+coverage.xml
