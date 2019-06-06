@@ -15,18 +15,16 @@ import shutil
 
 
 class Config:
-    def __init__(self):
+    def __init__(self, application_root=None):
         self.logger = logging.getLogger(__name__)
         self.config = None
 
         # Directories
-        self.application_root = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+        self.application_root = application_root or os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
         self.data_directory = os.path.join(self.application_root, "data")
         self.config_location = os.path.join(self.data_directory, "config.json")
 
-        self.load()
-
-    def locate(self):
+    def _locate(self):
         self.logger.debug("Trying to find config file")
 
         try:
@@ -48,7 +46,7 @@ class Config:
 
                 return True
             except Exception as error:
-                self.logger.error(error.strerror)
+                self.logger.error(error)
                 return False
 
     def load(self):
@@ -57,7 +55,7 @@ class Config:
         self.logger.debug(f"       Data Directory: { self.data_directory }")
         self.logger.debug(f" Config File Location: { self.config_location }")
 
-        if self.locate():
+        if self._locate():
             with open(self.config_location, "r") as config_file:
                 self.logger.debug("Loading config file in memory")
                 self.config = json.loads(config_file.read())

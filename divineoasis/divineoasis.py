@@ -25,6 +25,8 @@ class DivineOasis:
         self.assets = Assets()
 
     def start(self):
+        self.config.load()
+        
         self.logger.info("Starting Divine Oasis")
 
     def setup_logging(self):
