@@ -35,7 +35,8 @@ class DivineOasis:
         for row in large_title:
             print(row)
 
-    def setup_logging(self):
+    @staticmethod
+    def setup_logging():
         logging.basicConfig(level=logging.DEBUG)
 
         logging.config.dictConfig({
