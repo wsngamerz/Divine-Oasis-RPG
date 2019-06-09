@@ -1,10 +1,27 @@
 {
+    "sizes": [
+        {
+            "size": "large",
+            "path": "largeTitle",
+            "minChars": 181
+        }
+    ],
     "largeTitle": [
-        "_____  _       _             ____            _     ",
-        "|  __ \\(_)     (_)           / __ \\          (_)    ",
-        "| |  | |___   ___ _ __   ___| |  | | __ _ ___ _ ___ ",
-        "| |  | | \\ \\ / / | '_ \\ / _ \\ |  | |/ _` / __| / __|",
-        "| |__| | |\\ V /| | | | |  __/ |__| | (_| \\__ \\ \\__ \\",
-        "|_____/|_| \\_/ |_|_| |_|\\___|\\____/ \\__,_|___/_|___/"
+        "DDDDDDDDDDDDD          iiii                            iiii                                                 OOOOOOOOO                                         iiii                   ",
+        "D::::::::::::DDD      i::::i                          i::::i                                              OO:::::::::OO                                      i::::i                  ",
+        "D:::::::::::::::DD     iiii                            iiii                                             OO:::::::::::::OO                                     iiii                   ",
+        "DDD:::::DDDDD:::::D                                                                                    O:::::::OOO:::::::O                                                           ",
+        "  D:::::D    D:::::D iiiiiiivvvvvvv           vvvvvvviiiiiiinnnn  nnnnnnnn        eeeeeeeeeeee         O::::::O   O::::::O  aaaaaaaaaaaaa      ssssssssss   iiiiiii     ssssssssss   ",
+        "  D:::::D     D:::::Di:::::i v:::::v         v:::::v i:::::in:::nn::::::::nn    ee::::::::::::ee       O:::::O     O:::::O  a::::::::::::a   ss::::::::::s  i:::::i   ss::::::::::s  ",
+        "  D:::::D     D:::::D i::::i  v:::::v       v:::::v   i::::in::::::::::::::nn  e::::::eeeee:::::ee     O:::::O     O:::::O  aaaaaaaaa:::::ass:::::::::::::s  i::::i ss:::::::::::::s ",
+        "  D:::::D     D:::::D i::::i   v:::::v     v:::::v    i::::inn:::::::::::::::ne::::::e     e:::::e     O:::::O     O:::::O           a::::as::::::ssss:::::s i::::i s::::::ssss:::::s",
+        "  D:::::D     D:::::D i::::i    v:::::v   v:::::v     i::::i  n:::::nnnn:::::ne:::::::eeeee::::::e     O:::::O     O:::::O    aaaaaaa:::::a s:::::s  ssssss  i::::i  s:::::s  ssssss ",
+        "  D:::::D     D:::::D i::::i     v:::::v v:::::v      i::::i  n::::n    n::::ne:::::::::::::::::e      O:::::O     O:::::O  aa::::::::::::a   s::::::s       i::::i    s::::::s      ",
+        "  D:::::D     D:::::D i::::i      v:::::v:::::v       i::::i  n::::n    n::::ne::::::eeeeeeeeeee       O:::::O     O:::::O a::::aaaa::::::a      s::::::s    i::::i       s::::::s   ",
+        "  D:::::D    D:::::D  i::::i       v:::::::::v        i::::i  n::::n    n::::ne:::::::e                O::::::O   O::::::Oa::::a    a:::::assssss   s:::::s  i::::i ssssss   s:::::s ",
+        "DDD:::::DDDDD:::::D  i::::::i       v:::::::v        i::::::i n::::n    n::::ne::::::::e               O:::::::OOO:::::::Oa::::a    a:::::as:::::ssss::::::si::::::is:::::ssss::::::s",
+        "D:::::::::::::::DD   i::::::i        v:::::v         i::::::i n::::n    n::::n e::::::::eeeeeeee        OO:::::::::::::OO a:::::aaaa::::::as::::::::::::::s i::::::is::::::::::::::s ",
+        "D::::::::::::DDD     i::::::i         v:::v          i::::::i n::::n    n::::n  ee:::::::::::::e          OO:::::::::OO    a::::::::::aa:::as:::::::::::ss  i::::::i s:::::::::::ss  ",
+        "DDDDDDDDDDDDD        iiiiiiii          vvv           iiiiiiii nnnnnn    nnnnnn    eeeeeeeeeeeeee            OOOOOOOOO       aaaaaaaaaa  aaaa sssssssssss    iiiiiiii  sssssssssss    "
     ]
 }

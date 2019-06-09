@@ -8,7 +8,31 @@
 #    By wsngamerz
 # -------------------
 
+import json
+import logging
+import os
+
 
 class Assets:
-    def __init__(self):
-        pass
+    def __init__(self, language="en"):
+        self.logger = logging.getLogger(__name__)
+        self.lang = language
+        self.assets_directory = os.path.abspath(os.path.join(os.path.dirname(__name__), "divineoasis", "assets", language))
+
+        self.logger.debug(f"Setting up assets in language: { self.lang }")
+        self.logger.debug(f"Assets path: { self.assets_directory }")
+
+    def get(self, category, path):
+        file_location = os.path.join(self.assets_directory, f"{ category }.json")
+        file_contents = None
+        keylist = path.split(".")
+
+        with open(file_location, "r") as asset_file:
+            file_contents = json.loads(asset_file.read())
+            asset_file.close()
+
+        asset_data = file_contents
+        for key in keylist:
+            asset_data = asset_data[key]
+
+        return asset_data
