@@ -22,12 +22,18 @@ class DivineOasis:
 
         # Basic classes
         self.config = Config()
-        self.assets = Assets()
+        self.config.load()
+
+        self.assets = Assets(self.config.get("language"))
 
     def start(self):
-        self.config.load()
-        
         self.logger.info("Starting Divine Oasis")
+
+        large_title = self.assets.get("title", "largeTitle")
+        large_title.insert(0, "")
+        large_title.append("")
+        for row in large_title:
+            print(row)
 
     def setup_logging(self):
         logging.basicConfig(level=logging.DEBUG)
