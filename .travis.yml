@@ -7,10 +7,11 @@ python:
 install:
   - pip install coverage
   - pip install codacy-coverage
+  - pip install pytest-cov
   - pip install -r requirements.txt
 
 script:
-  - coverage run -m divineoasis
+  - pytest --cov=divineoasis tests/
 
 after_success:
   - coverage xml
