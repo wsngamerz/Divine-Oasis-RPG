@@ -45,7 +45,7 @@ def test_config_already_exists():
     with open(os.path.join(temp_config_file, "config.json"), "w") as temp_config_file:
         temp_config_file.write("{ \"lang\":\"en\" }")
         temp_config_file.close()
-    
+
     # Check if returns True
     assert config._locate() == True
 

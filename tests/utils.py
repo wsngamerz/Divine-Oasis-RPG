@@ -20,6 +20,6 @@ def clear_temp():
 
         for directory in containing_dirs:
             shutil.rmtree(os.path.join(temp_dir, directory))
-        
+
     except FileNotFoundError:
         pass
