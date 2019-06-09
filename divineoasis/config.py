@@ -64,5 +64,13 @@ class Config:
             self.config_file = None
             self.logger.error("Config file missing")
 
-    def get(self, path):
+    def get(self, path: str):
         self.logger.debug(f"Getting { path } from config")
+        keylist = path.split(".")
+
+        config_data = self.config
+
+        for key in keylist:
+            config_data = config_data[key]
+
+        return config_data
