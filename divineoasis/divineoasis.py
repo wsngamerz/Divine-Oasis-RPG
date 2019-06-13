@@ -11,13 +11,18 @@
 import divineoasis
 import logging
 import logging.config
+import os
 
 from divineoasis.assets import Assets
 from divineoasis.config import Config
+from divineoasis.colours import Colours
 
 
 class DivineOasis:
     def __init__(self):
+        # Enable Colours using black magic
+        os.system("")
+
         # Setup Logging
         self.logger = self.setup_logging()
 
@@ -63,5 +68,11 @@ class DivineOasis:
                 }
             }
         })
+
+        logging.addLevelName(logging.DEBUG,    Colours.BOLD + Colours.BRIGHT_CYAN   + "DEBUG"   + Colours.RESET)
+        logging.addLevelName(logging.INFO,     Colours.BOLD + Colours.BRIGHT_BLUE   + "INFO"    + Colours.RESET)
+        logging.addLevelName(logging.WARNING,  Colours.BOLD + Colours.BRIGHT_YELLOW + "WARNING" + Colours.RESET)
+        logging.addLevelName(logging.ERROR,    Colours.BOLD + Colours.BRIGHT_RED    + "ERROR"   + Colours.RESET)
+        logging.addLevelName(logging.CRITICAL, Colours.BOLD + Colours.BRIGHT_RED    + Colours.BLINK + "CRITICAL" + Colours.RESET)
 
         return logging.getLogger(__name__)
