@@ -8,6 +8,7 @@
 #    By wsngamerz
 # -------------------
 
+import divineoasis
 import logging
 import logging.config
 
@@ -27,11 +28,12 @@ class DivineOasis:
         self.assets = Assets(self.config.get("language"))
 
     def start(self):
-        self.logger.info("Starting Divine Oasis")
+        self.logger.info(f"Starting Divine Oasis { divineoasis.__version__ }")
 
-        large_title = self.assets.get("title", "largeTitle")
+        large_title = self.assets.get("title.largeTitle")
         large_title.insert(0, "")
         large_title.append("")
+
         for row in large_title:
             print(row)
 

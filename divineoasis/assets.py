@@ -22,10 +22,12 @@ class Assets:
         self.logger.debug(f"Setting up assets in language: { self.lang }")
         self.logger.debug(f"Assets path: { self.assets_directory }")
 
-    def get(self, category, path):
+    def get(self, path):
+        keylist = path.split(".")
+        category = keylist[0]
+        keylist.pop(0)
         file_location = os.path.join(self.assets_directory, f"{ category }.json")
         file_contents = None
-        keylist = path.split(".")
 
         with open(file_location, "r") as asset_file:
             file_contents = json.loads(asset_file.read())
