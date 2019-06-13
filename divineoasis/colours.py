@@ -14,7 +14,7 @@ class Colours:
     BOLD = "\u001b[1m"
     UNDERLINE = "\u001b[4m"
     BLINK = "\u001b[5m"
-    
+
     # Regular Colours
     BLACK = "\u001b[30m"
     RED = "\u001b[31m"
