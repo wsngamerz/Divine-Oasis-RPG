@@ -14,5 +14,5 @@ class Scene:
     def __init__(self, window: pyglet.window.Window):
         self.window = window
 
-    def update(self):
+    def update(self, dt: float):
         pass
