@@ -50,7 +50,7 @@ class Config:
                 return False
 
     def load(self):
-        self.logger.info("Loading Configuration")
+        self.logger.debug("Loading Configuration")
         self.logger.debug(f"Application Directory: { self.application_root }")
         self.logger.debug(f"       Data Directory: { self.data_directory }")
         self.logger.debug(f" Config File Location: { self.config_location }")
