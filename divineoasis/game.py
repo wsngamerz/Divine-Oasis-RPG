@@ -19,9 +19,10 @@ import sys
 from divineoasis.assets import Assets
 from divineoasis.config import Config
 from divineoasis.colours import Colours
+from divineoasis.scene_manager import SceneManager
 
 
-class DivineOasis(pyglet.window.Window):
+class DivineOasis:
     def __init__(self, debug: bool = False):
         self.debug = debug
 
@@ -46,8 +47,11 @@ class DivineOasis(pyglet.window.Window):
 
         self.game_assets = Assets(self.game_config.get("language"))
 
-        # Init Pyglet
-        super().__init__()
+        # setup Pyglet
+        self.window = pyglet.window.Window(caption="Divine Oasis")
+        self.scene_manager = SceneManager(self.window)
+
+        pyglet.clock.schedule_interval(self.scene_manager.update, 1.0 / self.game_config.get("fps"))
 
     def start(self):
         self.game_logger.info(f"Starting Divine Oasis { divineoasis.__version__ }")
@@ -61,9 +65,6 @@ class DivineOasis(pyglet.window.Window):
 
         # Start Pyglet loop
         pyglet.app.run()
-
-    def on_draw(self):
-        self.clear()
 
     @staticmethod
     def setup_logging(debug: bool):

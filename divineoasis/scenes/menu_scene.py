@@ -8,9 +8,24 @@
 #    By wsngamerz
 # -------------------
 
-from divineoasis import scene
+import pyglet
+
+from divineoasis.scene import Scene
 
 
-class MenuScene(scene.Scene):
-    def __init__(self):
-        super().__init__()
+class MenuScene(Scene):
+    def __init__(self, window: pyglet.window.Window):
+        super().__init__(window)
+
+        self.window = window
+
+        self.title = pyglet.text.Label("Divine Oasis",
+                                        font_size=36,
+                                        x=window.height/2,
+                                        y=window.height/2,
+                                        anchor_x="center",
+                                        anchor_y="center")
+
+    def update(self, dt: float):
+        self.window.clear()
+        self.title.draw()
