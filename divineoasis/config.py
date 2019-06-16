@@ -15,7 +15,7 @@ import shutil
 
 
 class Config:
-    def __init__(self, application_root=None):
+    def __init__(self, application_root: str = None):
         self.logger = logging.getLogger(__name__)
         self.config = None
 

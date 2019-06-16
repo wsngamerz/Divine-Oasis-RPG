@@ -22,7 +22,7 @@ from divineoasis.colours import Colours
 
 
 class DivineOasis(pyglet.window.Window):
-    def __init__(self, debug=False):
+    def __init__(self, debug: bool = False):
         self.debug = debug
 
         if self.debug:
@@ -66,7 +66,7 @@ class DivineOasis(pyglet.window.Window):
         self.clear()
 
     @staticmethod
-    def setup_logging(debug):
+    def setup_logging(debug: bool):
         if debug:
             level = "DEBUG"
         else:

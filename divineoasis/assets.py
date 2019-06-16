@@ -14,7 +14,7 @@ import os
 
 
 class Assets:
-    def __init__(self, language="en"):
+    def __init__(self, language: str = "en"):
         self.logger = logging.getLogger(__name__)
         self.lang = language
         self.assets_directory = os.path.abspath(os.path.join(os.path.dirname(__name__), "divineoasis", "assets", language))
@@ -22,7 +22,7 @@ class Assets:
         self.logger.debug(f"Setting up assets in language: { self.lang }")
         self.logger.debug(f"Assets path: { self.assets_directory }")
 
-    def get(self, path):
+    def get(self, path: str):
         keylist = path.split(".")
         category = keylist[0]
         keylist.pop(0)
