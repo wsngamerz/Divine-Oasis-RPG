@@ -8,6 +8,8 @@
 #    By wsngamerz
 # -------------------
 
+import pyglet
+
 
 class Scene:
     def __init__(self):
@@ -15,5 +17,15 @@ class Scene:
 
 
 class SceneManager:
-    def __init__(self):
+    def __init__(self, window: pyglet.window.Window):
+        self.window = window
+
+        # List of scenes
+        self.scenes = {}
+        self.current_scene = None
+
+    def add_scene(self, scene: Scene):
+        pass
+
+    def switch_scene(self, scene_name: str):
         pass
