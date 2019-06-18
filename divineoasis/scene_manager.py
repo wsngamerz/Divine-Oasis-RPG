@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# File: scene.py
+# File: scene_manager.py
 # -------------------
 #    Divine Oasis
 # Text Based RPG Game
@@ -10,12 +10,14 @@
 
 import pyglet
 
+from divineoasis.assets import Assets
 from divineoasis.scene import Scene
 from divineoasis.scenes.menu_scene import MenuScene
 
 
 class SceneManager:
-    def __init__(self, window: pyglet.window.Window):
+    def __init__(self, assets: Assets, window: pyglet.window.Window):
+        self.assets = assets
         self.window = window
 
         # List of scenes
@@ -23,7 +25,7 @@ class SceneManager:
         self.current_scene: Scene = None
 
         # Add scenes
-        self.add_scene(MenuScene(self.window))
+        self.add_scene(MenuScene(self.assets, self.window))
 
         self.switch_scene("MenuScene")
 

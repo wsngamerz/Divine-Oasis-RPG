@@ -13,22 +13,20 @@ import logging
 import os
 import shutil
 
+from divineoasis.assets import Directories
+
 
 class Config:
     def __init__(self, application_root: str = None):
         self.logger = logging.getLogger(__name__)
         self.config = None
-
-        # Directories
-        self.application_root = application_root or os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
-        self.data_directory = os.path.join(self.application_root, "data")
-        self.config_location = os.path.join(self.data_directory, "config.json")
+        self.directories = Directories(application_root)
 
     def _locate(self):
         self.logger.debug("Trying to find config file")
 
         try:
-            with open(self.config_location) as config_file:
+            with open(self.directories.config_location) as config_file:
                 self.logger.debug("Config file found")
                 config_file.close()
 
@@ -38,11 +36,11 @@ class Config:
             self.logger.debug("Moving template configuration")
 
             try:
-                if not os.path.exists(self.data_directory):
-                    os.makedirs(self.data_directory)
+                if not os.path.exists(self.directories.data_directory):
+                    os.makedirs(self.directories.data_directory)
 
-                template_config = os.path.join(self.application_root, "divineoasis", "assets", "config.default.json")
-                shutil.copyfile(template_config, self.config_location)
+                template_config = os.path.join(self.directories.assets_directory, "config.default.json")
+                shutil.copyfile(template_config, self.directories.config_location)
 
                 return True
             except Exception as error:
@@ -51,12 +49,9 @@ class Config:
 
     def load(self):
         self.logger.debug("Loading Configuration")
-        self.logger.debug(f"Application Directory: { self.application_root }")
-        self.logger.debug(f"       Data Directory: { self.data_directory }")
-        self.logger.debug(f" Config File Location: { self.config_location }")
 
         if self._locate():
-            with open(self.config_location, "r") as config_file:
+            with open(self.directories.config_location, "r") as config_file:
                 self.logger.debug("Loading config file in memory")
                 self.config = json.loads(config_file.read())
                 self.logger.debug("Loaded config file in memory")

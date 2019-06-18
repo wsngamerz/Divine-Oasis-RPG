@@ -16,7 +16,7 @@ import platform
 import pyglet
 import sys
 
-from divineoasis.assets import Assets
+from divineoasis.assets import Assets, Directories
 from divineoasis.config import Config
 from divineoasis.colours import Colours
 from divineoasis.scene_manager import SceneManager
@@ -49,7 +49,7 @@ class DivineOasis:
 
         # setup Pyglet
         self.window = pyglet.window.Window(caption="Divine Oasis")
-        self.scene_manager = SceneManager(self.window)
+        self.scene_manager = SceneManager(self.game_assets, self.window)
 
         pyglet.clock.schedule_interval(self.scene_manager.update, 1.0 / self.game_config.get("fps"))
 
@@ -115,12 +115,17 @@ class DivineOasis:
             "os_platform": platform.platform()
         }
 
-        self.game_logger.debug("=*=*=*=*=*=*=*=*=*= Debug Information =*=*=*=*=*=*=*=*=*=")
-        self.game_logger.debug(f"      Arguments: { self.system_data['arguments'] }")
-        self.game_logger.debug(f" Python Version: { self.system_data['python_version'] }")
-        self.game_logger.debug(f"             OS: { self.system_data['os'] }")
-        self.game_logger.debug(f"     OS Version: { self.system_data['os_version'] }")
-        self.game_logger.debug(f"     OS Release: { self.system_data['os_release'] }")
-        self.game_logger.debug(f"OS Architecture: { self.system_data['os_arch'] }")
-        self.game_logger.debug(f"    OS Platform: { self.system_data['os_platform'] }")
-        self.game_logger.debug("=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=")
+        self.game_logger.debug("=*=*=*=*=*=*=*=*=*=*=*= Debug Information =*=*=*=*=*=*=*=*=*=*=*=")
+        self.game_logger.debug(f"        Arguments: { self.system_data['arguments'] }")
+        self.game_logger.debug(f"   Python Version: { self.system_data['python_version'] }")
+        self.game_logger.debug(f"               OS: { self.system_data['os'] }")
+        self.game_logger.debug(f"       OS Version: { self.system_data['os_version'] }")
+        self.game_logger.debug(f"       OS Release: { self.system_data['os_release'] }")
+        self.game_logger.debug(f"  OS Architecture: { self.system_data['os_arch'] }")
+        self.game_logger.debug(f"      OS Platform: { self.system_data['os_platform'] }")
+        self.game_logger.debug("=*=*=*=*=*=*=*=*=*=*=*=*=* Directories *=*=*=*=*=*=*=*=*=*=*=*=*=")
+        self.game_logger.debug(f" Application Root: { Directories().application_root }")
+        self.game_logger.debug(f" Assets Directory: { Directories().assets_directory }")
+        self.game_logger.debug(f"   Data Directory: { Directories().data_directory }")
+        self.game_logger.debug(f"  Config Location: { Directories().config_location }")
+        self.game_logger.debug("=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=")

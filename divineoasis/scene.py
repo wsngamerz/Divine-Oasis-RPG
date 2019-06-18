@@ -10,8 +10,11 @@
 
 import pyglet
 
+from divineoasis.assets import Assets
+
 class Scene:
-    def __init__(self, window: pyglet.window.Window):
+    def __init__(self, assets: Assets, window: pyglet.window.Window):
+        self.assets = assets
         self.window = window
 
     def update(self, dt: float):

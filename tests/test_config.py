@@ -20,17 +20,19 @@ config = Config(test_directory)
 
 
 def test_application_root_set():
-    assert config.application_root == test_directory
+    assert config.directories.application_root == test_directory
 
 
 def test_data_directory_set():
     test_data_directory = os.path.join(test_directory, "data")
-    assert config.data_directory == test_data_directory
+
+    assert config.directories.data_directory == test_data_directory
 
 
 def test_config_location_set():
     test_config_location = os.path.join(test_directory, "data", "config.json")
-    assert config.config_location == test_config_location
+
+    assert config.directories.config_location == test_config_location
 
 
 def test_config_already_exists():
