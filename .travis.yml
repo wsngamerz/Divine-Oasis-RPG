@@ -4,6 +4,10 @@ language: python
 python:
   - "3.7"
 
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+
 install:
   - pip install coverage
   - pip install codacy-coverage
