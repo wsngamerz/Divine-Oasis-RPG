@@ -4,6 +4,11 @@ language: python
 services:
   - xvfb
 
+addons:
+  apt:
+    packages:
+    - freeglut3-dev
+
 python:
   - "3.7"
 
