@@ -48,7 +48,9 @@ class DivineOasis:
         self.game_assets = Assets(self.game_config.get("language"))
 
         # setup Pyglet
-        self.window = pyglet.window.Window(caption="Divine Oasis")
+        self.window = pyglet.window.Window(1280, 720)
+        self.window.set_caption(self.game_assets.get("title.title"))
+
         self.scene_manager = SceneManager(self.game_assets, self.window)
 
         pyglet.clock.schedule_interval(self.scene_manager.update, 1.0 / self.game_config.get("fps"))

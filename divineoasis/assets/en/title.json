@@ -1,11 +1,5 @@
 {
-    "sizes": [
-        {
-            "size": "large",
-            "path": "largeTitle",
-            "minChars": 181
-        }
-    ],
+    "title": "Divine Oasis",
     "largeTitle": [
         "DDDDDDDDDDDDD          iiii                            iiii                                                 OOOOOOOOO                                         iiii                   ",
         "D::::::::::::DDD      i::::i                          i::::i                                              OO:::::::::OO                                      i::::i                  ",

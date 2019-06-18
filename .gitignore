@@ -6,12 +6,10 @@ __pycache__/
 # VSCode
 .vscode/
 
-# Tree Diagram
-divine oasis tree diagram.xml
-
 # Coverage
 .coverage
 coverage.xml
 
 # Divine Oasis
 data/
+development_assets/
