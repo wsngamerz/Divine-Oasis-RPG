@@ -8,13 +8,15 @@
 #    By wsngamerz
 # -------------------
 
-import pyglet
-
 from divineoasis.assets import Assets
+from divineoasis.audio_manager import AudioManager
+
+from pyglet.window import Window
 
 class Scene:
-    def __init__(self, assets: Assets, window: pyglet.window.Window):
+    def __init__(self, assets: Assets, window: Window, audio: AudioManager):
         self.assets = assets
+        self.audio_manager = audio
         self.window = window
 
     def update(self, dt: float):

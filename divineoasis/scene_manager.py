@@ -8,16 +8,18 @@
 #    By wsngamerz
 # -------------------
 
-import pyglet
-
 from divineoasis.assets import Assets
+from divineoasis.audio_manager import AudioManager
 from divineoasis.scene import Scene
 from divineoasis.scenes.menu_scene import MenuScene
 
+from pyglet.window import Window
+
 
 class SceneManager:
-    def __init__(self, assets: Assets, window: pyglet.window.Window):
+    def __init__(self, assets: Assets, window: Window):
         self.assets = assets
+        self.audio_manager = AudioManager(self.assets, channels=8)
         self.window = window
 
         # List of scenes
@@ -25,7 +27,7 @@ class SceneManager:
         self.current_scene: Scene = None
 
         # Add scenes
-        self.add_scene(MenuScene(self.assets, self.window))
+        self.add_scene(MenuScene(self.assets, self.window, self.audio_manager))
 
         self.switch_scene("MenuScene")
 

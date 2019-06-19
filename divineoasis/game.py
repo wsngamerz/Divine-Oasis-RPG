@@ -21,6 +21,8 @@ from divineoasis.config import Config
 from divineoasis.colours import Colours
 from divineoasis.scene_manager import SceneManager
 
+from pyglet.window import Window
+
 
 class DivineOasis:
     def __init__(self, debug: bool = False):
@@ -48,8 +50,8 @@ class DivineOasis:
         self.game_assets = Assets(self.game_config.get("language"))
 
         # setup Pyglet
-        self.window = pyglet.window.Window(1280, 720)
-        self.window.set_caption(self.game_assets.get("title.title"))
+        self.window = Window(1280, 720)
+        self.window.set_caption(self.game_assets.get("lang.title.main_title"))
 
         self.scene_manager = SceneManager(self.game_assets, self.window)
 
@@ -58,7 +60,7 @@ class DivineOasis:
     def start(self):
         self.game_logger.info(f"Starting Divine Oasis { divineoasis.__version__ }")
 
-        large_title = self.game_assets.get("title.largeTitle")
+        large_title = self.game_assets.get("lang.title.large_title")
         large_title.insert(0, "")
         large_title.append("")
 
