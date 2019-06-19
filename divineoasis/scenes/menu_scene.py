@@ -85,7 +85,7 @@ class MenuScene(Scene):
                 (x >= self.options_button[0][0] and x <= self.options_button[1][0] and y <= self.options_button[0][1] and y >= self.options_button[1][1]) or
                 (x >= self.quit_button[0][0] and x <= self.quit_button[1][0] and y <= self.quit_button[0][1] and y >= self.quit_button[1][1])):
             cursor = self.window.get_system_mouse_cursor(self.window.CURSOR_HAND)
-        
+
         self.window.set_mouse_cursor(cursor)
 
     def handle_mouse_click(self, x: int, y: int, button: int, modifiers: int):
@@ -98,11 +98,11 @@ class MenuScene(Scene):
 
             elif y <= self.options_button[0][1] and y >= self.options_button[1][1]:
                 # Options Button
-                self.logger.debug("Clicked Options Button")                
+                self.logger.debug("Clicked Options Button")
 
             elif y <= self.quit_button[0][1] and y >= self.quit_button[1][1]:
                 # Quit button
-                self.logger.debug("Clicked Quit Button")                
+                self.logger.debug("Clicked Quit Button")
 
     def update(self, dt: float):
         self.window.clear()

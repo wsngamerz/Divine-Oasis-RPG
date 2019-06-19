@@ -70,7 +70,7 @@ class Assets:
         self.logger.debug(f"            track={ pyglet_media.info.track } genre={ pyglet_media.info.genre }")
 
         return pyglet_media
-    
+
     def _language_path(self, path: str) -> tuple:
         keylist = path.split(".")
 
