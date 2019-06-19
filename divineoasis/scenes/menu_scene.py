@@ -57,7 +57,7 @@ class MenuScene(Scene):
                 x=(self.window.width//2) - (logo_image.width//2),
                 y=(self.window.height//2) + 200,
                 batch=self.batch, group=self.foreground)
-        
+
         play_button_image = self.assets.get_pyglet_image("lang.user_interface.play_button")
         self.play_button_sprite = Sprite(play_button_image,
                 x=(self.window.width//2) - (play_button_image.width//2),
