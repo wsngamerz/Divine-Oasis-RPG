@@ -69,7 +69,7 @@ class MenuScene(Scene):
                 x=(self.window.width//2) - (options_button_image.width//2),
                 y=(self.window.height//2) - 80,
                 batch=self.batch, group=self.foreground)
-        
+
         quit_button_image = self.assets.get_pyglet_image("lang.user_interface.quit_button")
         self.quit_button_sprite = Sprite(quit_button_image,
                 x=(self.window.width//2) - (quit_button_image.width//2),
