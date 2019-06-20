@@ -31,7 +31,7 @@ class DivineOasis:
         if self.debug:
             if platform.system() == "Windows":
                 # Set larger console
-                os.system("mode con: cols=200 lines=70")
+                os.system("mode con: cols=200 lines=9999")
 
         # Enable Colours using black magic
         os.system("")
@@ -51,11 +51,16 @@ class DivineOasis:
 
         # setup Pyglet
         self.window = Window(1280, 720)
+        self.window.set_vsync(self.game_config.get("vsync"))
+        # TODO: Fix fullscreen mode
+        # self.window.set_fullscreen(self.game_config.get("fullscreen"))
         self.window.set_caption(self.game_assets.get("lang.title.main_title"))
 
-        self.scene_manager = SceneManager(self.game_assets, self.window)
+        fps_limit = self.game_config.get("fps")
 
-        pyglet.clock.schedule_interval(self.scene_manager.update, 1.0 / self.game_config.get("fps"))
+        self.scene_manager = SceneManager(self.game_assets, self.window)
+        pyglet.clock.set_fps_limit(fps_limit)
+        pyglet.clock.schedule(self.scene_manager.update)
 
     def start(self):
         self.game_logger.info(f"Starting Divine Oasis { divineoasis.__version__ }")

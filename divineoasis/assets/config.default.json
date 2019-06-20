@@ -1,5 +1,7 @@
 {
     "version": 1,
     "language": "en",
-    "fps": 30
+    "fps": 30,
+    "vsync": true,
+    "fullscreen": true
 }

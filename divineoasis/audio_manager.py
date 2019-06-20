@@ -21,6 +21,7 @@ class AudioManager:
         self.channels = channels
         self.logger = logging.getLogger(__name__)
         self.music_player = Player()
+        self.music_player.volume = 0.75
         self.sfx_players = [Player() for player in range(self.channels)]
 
     def play_song(self, path: str, loop: bool = False):
