@@ -14,6 +14,7 @@ import logging.config
 import os
 import platform
 import pyglet
+import pyglet_ffmpeg
 import sys
 
 from divineoasis.assets import Assets, Directories
@@ -50,6 +51,7 @@ class DivineOasis:
         self.game_assets = Assets(self.game_config.get("language"))
 
         # setup Pyglet
+        pyglet_ffmpeg.load_ffmpeg()
         self.window = Window(1280, 720)
         self.window.set_vsync(self.game_config.get("vsync"))
         # TODO: Fix fullscreen mode
@@ -59,7 +61,6 @@ class DivineOasis:
         fps_limit = self.game_config.get("fps")
 
         self.scene_manager = SceneManager(self.game_assets, self.window)
-        pyglet.clock.set_fps_limit(fps_limit)
         pyglet.clock.schedule(self.scene_manager.update)
 
     def start(self):

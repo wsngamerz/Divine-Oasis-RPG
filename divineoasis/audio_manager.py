@@ -12,7 +12,7 @@ import logging
 
 from divineoasis.assets import Assets
 
-from pyglet.media import Player, SourceGroup
+from pyglet.media import Player
 
 
 class AudioManager:
@@ -26,16 +26,8 @@ class AudioManager:
 
     def play_song(self, path: str, loop: bool = False):
         media_file = self.assets.get_pyglet_media(path)
-        media = None
-
-        if loop:
-            media = SourceGroup(media_file.audio_format, None)
-            media.loop = True
-            media.queue(media_file)
-        else:
-            media = media_file
-
-        self.music_player.queue(media)
+        self.music_player.loop = loop
+        self.music_player.queue(media_file)
 
         if not self.music_player.playing:
             self.music_player.play()

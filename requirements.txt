@@ -1,1 +1,2 @@
-pyglet
+pyglet>=1.4.0b1
+pyglet_ffmpeg
