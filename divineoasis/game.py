@@ -14,7 +14,6 @@ import logging.config
 import os
 import platform
 import pyglet
-import pyglet_ffmpeg
 import sys
 
 from divineoasis.assets import Assets, Directories
@@ -34,6 +33,10 @@ class DivineOasis:
                 # Set larger console
                 os.system("mode con: cols=200 lines=9999")
 
+        if platform.system() != "Linux":
+            import pyglet_ffmpeg
+            pyglet_ffmpeg.load_ffmpeg()
+
         # Enable Colours using black magic
         os.system("")
 
@@ -51,7 +54,6 @@ class DivineOasis:
         self.game_assets = Assets(self.game_config.get("language"))
 
         # setup Pyglet
-        pyglet_ffmpeg.load_ffmpeg()
         self.window = Window(1280, 720)
         self.window.set_vsync(self.game_config.get("vsync"))
         # TODO: Fix fullscreen mode

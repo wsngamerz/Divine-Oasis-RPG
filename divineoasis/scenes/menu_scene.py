@@ -133,7 +133,7 @@ class MenuScene(Scene):
             elif y <= self.button_coords["quit_button"][0][1] and y >= self.button_coords["quit_button"][1][1]:
                 # Quit button
                 self.logger.debug("Clicked Quit Button")
-                sys.exit()
+                sys.exit(0)
 
     def update(self, dt: float):
         self.window.clear()
