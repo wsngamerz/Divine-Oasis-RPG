@@ -24,6 +24,8 @@ class AudioManager:
         self.music_player.volume = 0.75
         self.sfx_players = [Player() for player in range(self.channels)]
 
+        # TODO: Add songs into class var so that they dont get loaded from the disk every time theyre requested
+
     def _play(self):
         if not self.music_player.playing:
             self.music_player.play()
