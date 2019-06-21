@@ -9,6 +9,7 @@
 # -------------------
 
 import logging
+import random
 import sys
 
 from divineoasis.assets import Assets
@@ -55,20 +56,28 @@ class MenuScene(Scene):
         self.start_audio()
 
     def load_sprite_images(self):
-        self.images["background_image"] = self.assets.get_pyglet_image("user_interface.background_large")
+        self.images["background_image"] = self.assets.get_pyglet_image("user_interface.background")
         self.images["logo_image"] = self.assets.get_pyglet_image("lang.user_interface.logo")
         self.images["play_button_image"] = self.assets.get_pyglet_image("lang.user_interface.play_button")
         self.images["options_button_image"] = self.assets.get_pyglet_image("lang.user_interface.options_button")
         self.images["quit_button_image"] = self.assets.get_pyglet_image("lang.user_interface.quit_button")
 
     def start_audio(self):
-        self.audio_manager.play_song("menu.ove_melaa_italo_unlimited", loop=True)
+        songs = [
+            "menu.ove_melaa_italo_unlimited",
+            "menu.ove_melaa_super_ninja_assasin",
+            "menu.ove_melaa_power_of_thy_yes"
+        ]
+
+        random.shuffle(songs)
+        self.logger.debug(f"Loading menu songs: { songs }")
+        self.audio_manager.play_songs(songs, loop=True)
 
     def draw_background(self):
         self.bg_pos[0] -= 2
         self.bg_pos[1] -= 1
 
-        if self.bg_pos[0] <= -1280:
+        if self.bg_pos[0] <= -4800:
             self.bg_pos = [0, 0]
 
         self.sprites["background_sprite"] = Sprite(self.images["background_image"],

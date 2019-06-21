@@ -66,13 +66,6 @@ class DivineOasis:
     def start(self):
         self.game_logger.info(f"Starting Divine Oasis { divineoasis.__version__ }")
 
-        large_title = self.game_assets.get("lang.title.large_title")
-        large_title.insert(0, "")
-        large_title.append("")
-
-        for row in large_title:
-            print(row)
-
         # Start Pyglet loop
         pyglet.app.run()
 

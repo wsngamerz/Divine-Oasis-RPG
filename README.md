@@ -9,7 +9,7 @@ A to-be RPG written in python!
 
 ## Attribution
 
-'Italo Unlimited' written and produced by Ove Melaa (Omsofware@hotmail.com)
+'Italo Unlimited', 'Super Ninja Assasin' and 'Power of thy yes' written and produced by Ove Melaa (Omsofware@hotmail.com)
 
 ##### Helpful Websites:
 
