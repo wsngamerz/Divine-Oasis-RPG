@@ -54,6 +54,7 @@ class DivineOasis:
         self.game_assets = Assets(self.game_config.get("language"))
 
         # setup Pyglet
+        pyglet.options['audio'] = ('openal', 'pulse', 'directsound', 'silent')
         self.window = Window(1280, 720)
         self.window.set_vsync(self.game_config.get("vsync"))
         # TODO: Fix fullscreen mode

@@ -60,7 +60,7 @@ class Assets:
 
     def get_pyglet_media(self, path: str) -> Source:
         keylist, assets_root = self._language_path(path)
-        file_path = os.path.normpath(os.path.join(assets_root, "audio", "/".join(keylist) + ".mp3"))
+        file_path = os.path.normpath(os.path.join(assets_root, "audio", "/".join(keylist) + ".ogg"))
         pyglet_media = pyglet.media.load(file_path)
 
         self.logger.debug(f"Getting { file_path }")
