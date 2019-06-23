@@ -58,7 +58,7 @@ class AudioManager:
         for path in paths:
             media_file = self._load_song(path)
             self.music_player.queue(media_file)
-        
+
         if loop:
             self.loop_songs_list = paths
             self.music_player.on_player_eos = lambda: self.play_songs(paths, True)
