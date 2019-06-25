@@ -14,8 +14,7 @@ from divineoasis.assets import Assets
 from divineoasis.audio_manager import AudioManager
 from divineoasis.scene import Scene
 
-from divineoasis.scenes.menu_scene import MenuScene
-from divineoasis.scenes.options_scene import OptionsScene
+from divineoasis.scenes.main_menu_manager import MainMenu
 
 from pyglet.window import Window
 
@@ -32,15 +31,14 @@ class SceneManager:
         self.current_scene: Scene = None
 
         # Add scenes
-        self.add_scene(MenuScene(self.assets, self.window, self.audio_manager))
-        self.add_scene(OptionsScene(self.assets, self.window, self.audio_manager))
+        self.add_scene(MainMenu(self.assets, self.window, self.audio_manager))
 
-        self.switch_scene("MenuScene")
+        self.switch_scene("MainMenu")
 
     def add_scene(self, scene: Scene):
         scene_name = scene.__class__.__name__
-        self.scenes[scene_name] = scene
         scene.switch_scene = self.switch_scene
+        self.scenes[scene_name] = scene
 
         self.logger.debug(f"Added { scene_name } to scene list")
 
@@ -50,6 +48,7 @@ class SceneManager:
             self.current_scene = self.scenes[scene_name]
             self.window.push_handlers(self.current_scene)
             self.logger.debug(f"Switching to Scene: { scene_name }")
+            self.current_scene.start_scene()
 
     def update(self, dt: float):
         self.current_scene.update(dt)

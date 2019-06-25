@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# File: scenes/menu_scene.py
+# File: scenes/main_scene/menu_scene.py
 # -------------------
 #    Divine Oasis
 # Text Based RPG Game
@@ -18,7 +18,7 @@ from divineoasis.scene import Scene
 
 from pyglet.graphics import Batch, OrderedGroup
 from pyglet.sprite import Sprite
-from pyglet.window import Window, FPSDisplay
+from pyglet.window import Window
 
 
 class MenuScene(Scene):
@@ -32,9 +32,6 @@ class MenuScene(Scene):
         self.background = OrderedGroup(0)
         self.foreground = OrderedGroup(1)
 
-        self.fps_display = FPSDisplay(self.window)
-        self.fps_display.label.color = (255, 255, 255, 255)
-
         # Coordinates of elements for mouse stuff
         self.button_coords = {
             "play_button": [(512, 424), (768, 360)],
@@ -46,17 +43,13 @@ class MenuScene(Scene):
         self.images = {}
         self.sprites = {}
 
-        # Pos for moving background
-        self.bg_pos = [0, 0]
-
+    def start_scene(self):
         self.logger.debug(f"Menu Scene Window -> W: { self.window.width } H: { self.window.height }")
         self.load_sprite_images()
-        self.draw_background()
         self.draw_foreground()
         self.start_audio()
 
     def load_sprite_images(self):
-        self.images["background_image"] = self.assets.get_pyglet_image("user_interface.background")
         self.images["logo_image"] = self.assets.get_pyglet_image("lang.user_interface.logo")
         self.images["play_button_image"] = self.assets.get_pyglet_image("lang.user_interface.play_button")
         self.images["options_button_image"] = self.assets.get_pyglet_image("lang.user_interface.options_button")
@@ -72,17 +65,6 @@ class MenuScene(Scene):
         random.shuffle(songs)
         self.logger.debug(f"Loading menu songs: { songs }")
         self.audio_manager.play_songs(songs, loop=True)
-
-    def draw_background(self):
-        self.bg_pos[0] -= 2
-        self.bg_pos[1] -= 1
-
-        if self.bg_pos[0] <= -4800:
-            self.bg_pos = [0, 0]
-
-        self.sprites["background_sprite"] = Sprite(self.images["background_image"],
-                x=round(self.bg_pos[0]), y=round(self.bg_pos[1]),
-                batch=self.batch, group=self.background)
 
     def draw_foreground(self):
         self.sprites["logo_sprite"] = Sprite(self.images["logo_image"],
@@ -128,7 +110,7 @@ class MenuScene(Scene):
             elif y <= self.button_coords["options_button"][0][1] and y >= self.button_coords["options_button"][1][1]:
                 # Options Button
                 self.logger.debug("Clicked Options Button")
-                self.switch_scene("OptionsScene")
+                self.switch_sub_scene("OptionsScene")
 
             elif y <= self.button_coords["quit_button"][0][1] and y >= self.button_coords["quit_button"][1][1]:
                 # Quit button
@@ -137,6 +119,4 @@ class MenuScene(Scene):
 
     def update(self, dt: float):
         self.window.clear()
-        self.draw_background()
         self.batch.draw()
-        self.fps_display.draw()
