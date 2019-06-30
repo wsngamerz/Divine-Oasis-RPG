@@ -24,9 +24,8 @@ from pyglet.window import Window, FPSDisplay
 
 class MainMenu(Scene):
     def __init__(self, assets: Assets, window: Window, audio_manager: AudioManager):
-        self.window = window
-        self.assets = assets
-        self.audio_manager = audio_manager
+        Scene.__init__(self, assets, window, audio_manager)
+
         self.logger = logging.getLogger(__name__)
 
         self.current_scene = None

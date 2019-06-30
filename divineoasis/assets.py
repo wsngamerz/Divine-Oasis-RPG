@@ -28,6 +28,12 @@ class Assets:
         self.logger.debug(f"Assets path: { self.assets_directory }")
         self.logger.debug(f"Assets path (w/ Lang): { self.lang_assets_directory }")
 
+        self._load_fonts()
+
+    def _load_fonts(self):
+        pyglet.font.add_file(os.path.join(self.assets_directory, "fonts", "Hydrophilia_Iced.ttf"))
+        hydrophilia_iced_font = pyglet.font.load("Hydrophilia Iced", size=11)
+
     def get(self, path: str) -> str:
         keylist, assets_root = self._language_path(path)
         category = keylist[0]

@@ -11,6 +11,8 @@ A to-be RPG written in python!
 
 'Italo Unlimited', 'Super Ninja Assasin' and 'Power of thy yes' written and produced by Ove Melaa (Omsofware@hotmail.com)
 
+'Hydrophilla' Font designed by Felix Braden (<http://www.floodfonts.com/freefont/hydrophi.html>)
+
 ##### Helpful Websites:
 
 -   <http://www.fearrpg.net/FEAR_RPG.pdf>
