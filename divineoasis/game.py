@@ -51,11 +51,11 @@ class DivineOasis:
         self.game_config = Config()
         self.game_config.load()
 
-        self.game_assets = Assets(self.game_config.get("language"))
+        self.game_assets = Assets(self.game_config.get("language.lang"))
 
         # setup Pyglet
         pyglet.options['audio'] = ('openal', 'pulse', 'directsound', 'silent')
-        vsync_enabled = self.game_config.get("vsync")
+        vsync_enabled = self.game_config.get("graphics.vsync")
 
         self.window = Window(1280, 720)
         self.window.set_vsync(vsync_enabled)
@@ -63,7 +63,7 @@ class DivineOasis:
         # self.window.set_fullscreen(self.game_config.get("fullscreen"))
         self.window.set_caption(self.game_assets.get("lang.title.main_title"))
 
-        fps_limit = self.game_config.get("fps")
+        fps_limit = self.game_config.get("graphics.fps")
 
         self.scene_manager = SceneManager(self.game_assets, self.window)
         if vsync_enabled:

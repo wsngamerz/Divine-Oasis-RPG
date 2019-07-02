@@ -19,7 +19,7 @@ class Scene:
         self.assets = assets
         self.audio_manager = audio
         self.window = window
-        self.gui = GuiManager(self.window, self.assets)
+        self.gui = GuiManager(self.window)
 
     def switch_scene(self, scene_name: str):
         pass

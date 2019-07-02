@@ -30,7 +30,9 @@ class Button(Component):
 
         self._label = None
         self._label_x = self._x + (self._texture.width // 2)
-        self._label_y = self._y + (self._texture.height // 2)
+        self._label_y = (self._y + (self._texture.height // 2)) + 3
+
+        self.is_hovering = False
 
         self.load_label()
         self.load_sprite()
@@ -50,15 +52,30 @@ class Button(Component):
     def load_sprite(self):
         self._sprite = Sprite(self._texture, self._x, self._y)
 
+    def on_mouse_enter(self, window: Window, x: int, y: int):
+        self.__handle_hover(window, True)
+
     def on_mouse_motion(self, window: Window, x: int, y: int, dx: int, dy: int):
-        cursor = window.get_system_mouse_cursor(window.CURSOR_HAND)
-        window.set_mouse_cursor(cursor)
+        self.__handle_hover(window, True)
 
     def on_mouse_press(self, window: Window, x: int, y: int, button, modifiers):
         self._click_function()
 
+    def on_mouse_leave(self, window: Window, x: int, y: int):
+        self.__handle_hover(window, False)
+
     def on_mouse_release(self, window: Window, x: int, y: int, button, modifiers):
         pass
+
+    def __handle_hover(self, window: Window, hover: bool):
+        cursor = None
+
+        if hover:
+            cursor = window.get_system_mouse_cursor(window.CURSOR_HAND)
+        else:
+            cursor = window.get_system_mouse_cursor(window.CURSOR_DEFAULT)
+
+        window.set_mouse_cursor(cursor)
 
     def draw(self):
         self._sprite.draw()

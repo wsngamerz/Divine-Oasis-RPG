@@ -29,6 +29,9 @@ class AudioManager:
 
         self._debug_info()
 
+        if get_audio_driver().__class__.__name__ == "DirectSoundDriver":
+            self.logger.warn("Using the directsound driver may have negative impacts on performance. It is recomended to use OpenAL instead")
+
     def _play_song(self):
         if not self.music_player.playing:
             self.music_player.play()
@@ -54,15 +57,20 @@ class AudioManager:
 
         self._play_song()
 
-    def play_songs(self, paths: list, loop: bool = False):
+    def load_songs(self, paths: list, loop: bool = False):
         for path in paths:
             media_file = self._load_song(path)
             self.music_player.queue(media_file)
 
         if loop:
             self.loop_songs_list = paths
-            self.music_player.on_player_eos = lambda: self.play_songs(paths, True)
+            self.music_player.on_player_eos = lambda: self._loop_eos(paths)
 
+    def _loop_eos(self, paths: list):
+        self.load_songs(paths, True)
+        self.play_songs()
+
+    def play_songs(self):
         self._play_song()
 
     def get_music_volume(self) -> float:

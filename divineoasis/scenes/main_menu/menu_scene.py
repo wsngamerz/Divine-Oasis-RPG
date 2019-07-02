@@ -8,17 +8,19 @@
 #    By wsngamerz
 # -------------------
 
+import divineoasis
 import logging
-import random
 import sys
 
 from divineoasis.assets import Assets
 from divineoasis.audio_manager import AudioManager
 from divineoasis.components.button import Button
+from divineoasis.components.music_panel import MusicPanel
 from divineoasis.scene import Scene
 
 from pyglet.graphics import Batch, OrderedGroup
 from pyglet.sprite import Sprite
+from pyglet.text import Label
 from pyglet.window import Window
 
 
@@ -31,48 +33,33 @@ class MenuScene(Scene):
         self.background = OrderedGroup(0)
         self.foreground = OrderedGroup(1)
 
-        # List of sprites and images
-        self.images = {}
-        self.sprites = {}
+        # Logo image and sprite
+        self.logo_image = None
+        self.logo_sprite = None
+
+        # Version and info labels
+        self.version_label = Label(f"Version: { divineoasis.__version__ }", x=10, y=30, group=self.foreground, batch=self.batch, font_size=16, font_name="Hydrophilia Iced")
+        self.author_label = Label(f"by { divineoasis.__author__ }", x=10, y=10, group=self.foreground, batch=self.batch, font_size=16, font_name="Hydrophilia Iced")
 
     def start_scene(self):
-        self.logger.debug(f"Menu Scene Window -> W: { self.window.width } H: { self.window.height }")
-        self.load_sprite_images()
-        self.draw_foreground()
-        self.start_audio()
+        self.load_logo()
 
-        buttons = [
-            Button("play_button", 247, 200, 256, 64, self.assets.get_pyglet_image("user_interface.blank_button"), "Play"),
-            Button("options_button", 512, 200, 256, 64, self.assets.get_pyglet_image("user_interface.blank_button"), "Options", lambda: self.switch_sub_scene("OptionsScene")),
-            Button("quit_button", 777, 200, 256, 64, self.assets.get_pyglet_image("user_interface.blank_button"), "Quit", sys.exit)
+        elements = [
+            Button("play_button", 247, 200, 256, 64, self.assets.get_pyglet_image("user_interface.button_blue_large"), "Play"),
+            Button("options_button", 512, 200, 256, 64, self.assets.get_pyglet_image("user_interface.button_blue_large"), "Options", lambda: self.switch_sub_scene("OptionsScene")),
+            Button("quit_button", 777, 200, 256, 64, self.assets.get_pyglet_image("user_interface.button_blue_large"), "Quit", sys.exit),
+            MusicPanel("music_panel", 1014, 10, 256, 98, self.assets.get_pyglet_image("user_interface.music_panel"), "Song Name", "Song Artist")
         ]
         
-        for button in buttons:
-            self.gui.add_component(button)
+        for element in elements:
+            self.gui.add_component(element)
 
-    def load_sprite_images(self):
-        self.images["logo_image"] = self.assets.get_pyglet_image("lang.user_interface.logo_v1")
-
-    def start_audio(self):
-        songs = [
-            "menu.ove_melaa_italo_unlimited",
-            "menu.ove_melaa_super_ninja_assasin",
-            "menu.ove_melaa_power_of_thy_yes"
-        ]
-
-        random.shuffle(songs)
-        self.logger.debug(f"Loading menu songs: { songs }")
-        self.audio_manager.play_songs(songs, loop=True)
-
-    def draw_foreground(self):
-        self.sprites["logo_sprite"] = Sprite(self.images["logo_image"],
-                x=(self.window.width//2) - (self.images["logo_image"].width//2),
+    def load_logo(self):
+        self.logo_image = self.assets.get_pyglet_image("lang.user_interface.logo")
+        self.logo_sprite = Sprite(self.logo_image,
+                x=(self.window.width//2) - (self.logo_image.width//2),
                 y=(self.window.height//2) - 50,
                 batch=self.batch, group=self.foreground)
-
-    def on_mouse_motion(self, x: int, y: int, dx: int, dy: int):
-        cursor = self.window.get_system_mouse_cursor(self.window.CURSOR_DEFAULT)
-        self.window.set_mouse_cursor(cursor)
 
     def update(self, dt: float):
         self.window.clear()

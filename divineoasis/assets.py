@@ -22,7 +22,7 @@ class Assets:
         self.logger = logging.getLogger(__name__)
         self.lang = language
         self.assets_directory = os.path.join(Directories().assets_directory)
-        self.lang_assets_directory = os.path.join(self.assets_directory, self.lang)
+        self.lang_assets_directory = os.path.join(self.assets_directory, "lang", self.lang)
 
         self.logger.debug(f"Setting up assets in language: { self.lang }")
         self.logger.debug(f"Assets path: { self.assets_directory }")

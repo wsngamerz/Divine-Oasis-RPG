@@ -29,7 +29,7 @@ class OptionsScene(Scene):
         self.background = OrderedGroup(0)
 
     def start_scene(self):
-        back_button = Button("play_button", 512, 40, 256, 64, self.assets.get_pyglet_image("user_interface.blank_button"), "Back", lambda: self.switch_sub_scene("MenuScene"))
+        back_button = Button("play_button", 512, 40, 256, 64, self.assets.get_pyglet_image("user_interface.button_blue_large"), "Back", lambda: self.switch_sub_scene("MenuScene"))
         self.gui.add_component(back_button)
 
     def update(self, dt: float):

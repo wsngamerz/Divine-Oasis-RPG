@@ -1,7 +1,14 @@
 {
     "version": 1,
-    "language": "en",
-    "fps": 30,
-    "vsync": true,
-    "fullscreen": true
+    "gameplay": {},
+    "controls": {},
+    "graphics": {
+        "fps": 30,
+        "vsync": true,
+        "fullscreen": "windowed"
+    },
+    "audio": {},
+    "language": {
+        "lang": "en"
+    }
 }

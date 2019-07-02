@@ -31,7 +31,7 @@ class Component:
         return f"{ self.__class__.__name__ }(id={ self._uid })"
 
     def add_component(self, component: Component):
-        raise NotImplementedError
+        pass
 
     def hide(self):
         self._hidden = True
@@ -55,31 +55,31 @@ class Component:
         return self._x <= x < self._x + self._width and self._y <= y < self._y + self._height
 
     def on_mouse_press(self, window: Window, x: int, y: int, button, modifiers):
-        raise NotImplementedError
+        pass
 
     def on_mouse_release(self, window: Window, x: int, y: int, button, modifiers):
-        raise NotImplementedError
+        pass
 
     def on_mouse_motion(self, window: Window, x: int, y: int, dx: int, dy: int):
-        raise NotImplementedError
+        pass
 
     def on_mouse_enter(self, window: Window, x: int, y: int):
-        raise NotImplementedError
+        pass
 
     def on_mouse_leave(self, window: Window, x: int, y: int):
-        raise NotImplementedError
+        pass
 
     def on_mouse_drag(self, window: Window, x: int, y: int, dx: int, dy: int, buttons, modifiers):
-        raise NotImplementedError
+        pass
 
     def on_mouse_drag_enter(self, window: Window, x: int, y: int):
-        raise NotImplementedError
+        pass
 
     def on_mouse_drag_leave(self, window: Window, x: int, y: int):
-        raise NotImplementedError
+        pass
 
     def on_mouse_scroll(self, window: Window, x: int, y: int, scroll_x: int, scroll_y: int):
-        raise NotImplementedError
+        pass
 
     def draw(self):
         raise NotImplementedError
