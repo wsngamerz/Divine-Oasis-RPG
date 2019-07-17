@@ -9,28 +9,36 @@
 # -------------------
 
 import logging
+import os
+import pyglet
 
 from divineoasis.components.component import Component
 
-from pyglet.image import AbstractImage
 from pyglet.sprite import Sprite
 from pyglet.text import Label
 from pyglet.window import Window
 
 
 class Button(Component):
-    def __init__(self, uid: str, x: int, y: int, width: int, height: int, texture: AbstractImage, text: str = "", click_function = None):
+    def __init__(self, uid: str, x: int, y: int, style: str = "button_blue_large", text: str = "", click_function = None):
         self.button_logger = logging.getLogger(__name__)
 
-        Component.__init__(self, uid, x, y, width, height)
-
         self._text = text
-        self._texture = texture
+        self._style = style
+
         self._sprite = None
+        self._sprite_normal = None
+        self._sprite_hover = None
+        self._texture_normal = None
+        self._texture_hover = None
+
+        self.load_textures()
+
+        Component.__init__(self, uid, x, y, self._texture_normal.width, self._texture_normal.height)
 
         self._label = None
-        self._label_x = self._x + (self._texture.width // 2)
-        self._label_y = (self._y + (self._texture.height // 2)) + 3
+        self._label_x = self._x + (self._texture_normal.width // 2)
+        self._label_y = (self._y + (self._texture_normal.height // 2)) + 3
 
         self.is_hovering = False
 
@@ -49,8 +57,15 @@ class Button(Component):
                             x=self._label_x, y=self._label_y,
                             anchor_x="center", anchor_y="center")
 
+    def load_textures(self):
+        style_path = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "assets", "user_interface"))
+        self._texture_normal = pyglet.image.load(os.path.join(style_path, f"{ self._style }.png"))
+        self._texture_hover = pyglet.image.load(os.path.join(style_path, f"{ self._style }_hover.png"))
+
     def load_sprite(self):
-        self._sprite = Sprite(self._texture, self._x, self._y)
+        self._sprite_normal = Sprite(self._texture_normal, self._x, self._y)
+        self._sprite_hover = Sprite(self._texture_hover, self._x, self._y)
+        self._sprite = self._sprite_normal
 
     def on_mouse_enter(self, window: Window, x: int, y: int):
         self.__handle_hover(window, True)
@@ -72,8 +87,10 @@ class Button(Component):
 
         if hover:
             cursor = window.get_system_mouse_cursor(window.CURSOR_HAND)
+            self._sprite = self._sprite_hover
         else:
             cursor = window.get_system_mouse_cursor(window.CURSOR_DEFAULT)
+            self._sprite = self._sprite_normal
 
         window.set_mouse_cursor(cursor)
 

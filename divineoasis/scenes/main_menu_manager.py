@@ -78,6 +78,11 @@ class MainMenu(Scene):
 
     def load_background(self):
         self.background_image = self.assets.get_pyglet_image("user_interface.background")
+        self.initiate_background()
+
+    def initiate_background(self):
+        if not self.background_image:
+            self.load_background()
         self.background_sprite = Sprite(self.background_image, x=0, y=0,
                 batch=self.current_scene.batch, group=self.current_scene.background)
 
@@ -86,6 +91,7 @@ class MainMenu(Scene):
             self.window.remove_handlers(self.current_scene)
             self.current_scene = self.sub_scenes[sub_scene_name]
             self.window.push_handlers(self.current_scene)
+            self.initiate_background()
             self.current_scene.start_scene()
 
     def update(self, dt: float):

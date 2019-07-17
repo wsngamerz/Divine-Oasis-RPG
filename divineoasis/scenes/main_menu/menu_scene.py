@@ -45,10 +45,10 @@ class MenuScene(Scene):
         self.load_logo()
 
         elements = [
-            Button("play_button", 247, 200, 256, 64, self.assets.get_pyglet_image("user_interface.button_blue_large"), "Play"),
-            Button("options_button", 512, 200, 256, 64, self.assets.get_pyglet_image("user_interface.button_blue_large"), "Options", lambda: self.switch_sub_scene("OptionsScene")),
-            Button("quit_button", 777, 200, 256, 64, self.assets.get_pyglet_image("user_interface.button_blue_large"), "Quit", sys.exit),
-            MusicPanel("music_panel", 1014, 10, 256, 98, self.assets.get_pyglet_image("user_interface.music_panel"), "Song Name", "Song Artist")
+            Button(uid="play_button", x=247, y=200, style="button_blue_large", text="Play"),
+            Button(uid="options_button", x=512, y=200, style="button_blue_large", text="Options", click_function=lambda: self.switch_sub_scene("OptionsScene")),
+            Button(uid="quit_button", x=777, y=200, style="button_blue_large", text="Quit", click_function=sys.exit),
+            MusicPanel(uid="music_panel", x=1014, y=10, width=256, height=98, texture=self.assets.get_pyglet_image("user_interface.music_panel"), song_name="Song Name", song_artist="Song Artist")
         ]
         
         for element in elements:
