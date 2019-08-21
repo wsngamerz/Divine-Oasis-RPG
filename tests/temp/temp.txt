@@ -1,2 +1,0 @@
-files generated during testing will be placed here as this
-should be the location set as the application root
