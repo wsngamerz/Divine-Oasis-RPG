@@ -17,6 +17,9 @@ from pyglet.window import Window, mouse
 
 
 class MainMenuScene(Scene):
+    """
+    Displayed when the game first starts
+    """
     def __init__(self, window: Window):
         self.window = window
         self.batch = Batch()

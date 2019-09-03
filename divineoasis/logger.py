@@ -11,6 +11,10 @@ from divineoasis.config import Config
 
 
 class Logging:
+    """
+    Handles the distribution of logging throughout the application and configures the
+    formatting, colours and saving of log files.
+    """
     def __init__(self, config: Config):
         self.config = config
 
@@ -38,6 +42,7 @@ class Logging:
             }
         })
 
+        # will be used to set different colours for the logs
         addLevelName(DEBUG, "Debug")
         addLevelName(INFO, "Info")
         addLevelName(WARNING, "Warning")
@@ -46,4 +51,7 @@ class Logging:
 
 
     def get_logger(self, name: str) -> Logger:
+        """
+        Used to return a logger with a specific name (should bepackage namespace)
+        """
         return getLogger(name)

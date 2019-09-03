@@ -14,6 +14,9 @@ from pyglet.window import Window
 
 
 class GameScene(Scene):
+    """
+    The scene which is actually the window to the game!
+    """
     def __init__(self, window: Window):
         self.window = window
         self.batch = Batch()
@@ -21,6 +24,7 @@ class GameScene(Scene):
 
         self.logger.debug("GameScene initialised")
 
+        # testing 9 slice for buttons?
         self.tmp = NineSliceImage("divineoasis/assets/img/default_button.png", 200, 200, 512, 128, 64, self.batch)
 
 

@@ -10,6 +10,10 @@ from pathlib import Path
 
 
 class Directories:
+    """
+    Holds the directories which are frequently accessed
+    across application
+    """
     def __init__(self):
         self.base_directory = Path(user_data_dir("Divine Oasis", "wsngamerz"))
         self.saves_directory = self.base_directory / "saves"

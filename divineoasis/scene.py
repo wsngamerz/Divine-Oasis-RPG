@@ -18,4 +18,6 @@ class Scene:
 
 
     def update(self):
-        pass
+        # This should never be called as the update function should be 
+        # overwritten by any scene that extends from this base class
+        raise NotImplementedError

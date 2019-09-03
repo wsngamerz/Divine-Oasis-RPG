@@ -28,6 +28,12 @@ class Button:
         self.text = text
         self.function = function
 
+        # TODO: Convert gl drawing of a rectangle to using the 9-slice image class
+        #       once 9-slice images use gl calls too
+
+        # TODO: Possibly pull out methods such as contains_coords, hover and click methods
+        #       to a class such as a Widget/Component and/or a Rectangle class
+
         # NOTE: always ensure that the button text level is higher than
         # the background otherwise the label will be drawn over!
         self.group_button_bg = OrderedGroup(10)
@@ -74,12 +80,13 @@ class Button:
         else:
             self.colour = self.colour_normal
 
+        # draw the actuall bg
         self.button_bg = self.batch.add(4, GL_QUADS, self.group_button_bg,
             # coords for points
             ("v2f", (self.x,              self.y,
-                    self.x + self.width, self.y,
-                    self.x + self.width, self.y + self.height,
-                    self.x,              self.y + self.height)),
+                     self.x + self.width, self.y,
+                     self.x + self.width, self.y + self.height,
+                     self.x,              self.y + self.height)),
             # colours for points
             ("c3B", (self.colour[0], self.colour[1], self.colour[2],
                      self.colour[0], self.colour[1], self.colour[2],

@@ -7,5 +7,8 @@
 
 
 class AudioManager:
+    """
+    Handles the playback of audio (Both music and sfx)
+    """
     def __init__(self):
         pass

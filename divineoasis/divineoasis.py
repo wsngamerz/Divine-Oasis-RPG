@@ -65,7 +65,7 @@ class DivineOasis:
 
     def game_loop(self, dt):
         """
-        function is called every frame by the pyglet clock
+        Function whcih is called every frame by the pyglet clock (aka game-loop)
         """
         self.window.clear()
         self.scene_manager.update()
