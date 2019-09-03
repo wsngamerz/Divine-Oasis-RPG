@@ -1,0 +1,12 @@
+{
+    "config_version": 0,
+    "options": {
+        "graphics": {
+            "window_width": 1280,
+            "window_height": 720,
+            "vsync_enabled": true,
+            "framerate_limit": 60
+        },
+        "log_level": "debug"
+    }
+}

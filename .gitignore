@@ -9,6 +9,3 @@ __pycache__/
 # Coverage
 .coverage
 coverage.xml
-
-# Divine Oasis
-data/
