@@ -30,7 +30,7 @@ class OptionsScene(Scene):
         self.foreground = OrderedGroup(1)
 
     def start_scene(self):
-        back_button = Button(uid="back_button", x=576, y=40, style="button_blue_small", text="Back", click_function=lambda: self.switch_sub_scene("MenuScene"))
+        back_button = Button(uid="back_button", x=576, y=40, style="button_red_small", text="Back", click_function=lambda: self.switch_sub_scene("MenuScene"))
         self.gui.add_component(back_button)
 
     def update(self, dt: float):

@@ -71,9 +71,9 @@ class Assets:
 
         self.logger.debug(f"Getting { file_path }")
         self.logger.debug(f"AudioFormat: { pyglet_media.audio_format } VideoFormat: { pyglet_media.video_format }")
-        self.logger.debug(f"Audio Info: title={ pyglet_media.info.title } author={ pyglet_media.info.author } copyright={ pyglet_media.info.copyright }")
-        self.logger.debug(f"            comment={ pyglet_media.info.comment } album={ pyglet_media.info.album } year={ pyglet_media.info.year }")
-        self.logger.debug(f"            track={ pyglet_media.info.track } genre={ pyglet_media.info.genre }")
+        # self.logger.debug(f"Audio Info: title={ pyglet_media.info.title } author={ pyglet_media.info.author } copyright={ pyglet_media.info.copyright }")
+        # self.logger.debug(f"            comment={ pyglet_media.info.comment } album={ pyglet_media.info.album } year={ pyglet_media.info.year }")
+        # self.logger.debug(f"            track={ pyglet_media.info.track } genre={ pyglet_media.info.genre }")
 
         return pyglet_media
 
