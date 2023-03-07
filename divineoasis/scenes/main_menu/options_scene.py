@@ -15,7 +15,7 @@ from divineoasis.audio_manager import AudioManager
 from divineoasis.components.button import Button
 from divineoasis.scene import Scene
 
-from pyglet.graphics import Batch, OrderedGroup
+from pyglet.graphics import Batch, Group
 from pyglet.sprite import Sprite
 from pyglet.window import Window
 
@@ -26,8 +26,8 @@ class OptionsScene(Scene):
         self.logger = logging.getLogger(__name__)
 
         self.batch = Batch()
-        self.background = OrderedGroup(0)
-        self.foreground = OrderedGroup(1)
+        self.background = Group(order=0)
+        self.foreground = Group(order=1)
 
     def start_scene(self):
         back_button = Button(uid="back_button", x=576, y=40, style="button_red_small", text="Back", click_function=lambda: self.switch_sub_scene("MenuScene"))

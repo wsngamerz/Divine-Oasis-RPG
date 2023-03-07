@@ -18,7 +18,6 @@ from divineoasis.scene import Scene
 from divineoasis.scenes.main_menu.menu_scene import MenuScene
 from divineoasis.scenes.main_menu.options_scene import OptionsScene
 
-from pyglet.graphics import Batch, OrderedGroup
 from pyglet.sprite import Sprite
 from pyglet.window import Window, FPSDisplay
 
@@ -95,8 +94,8 @@ class MainMenu(Scene):
             self.current_scene.start_scene()
 
     def update(self, dt: float):
-        self.bg_pos[0] -= 2
-        self.bg_pos[1] -= 1
+        self.bg_pos[0] -= 0.5
+        self.bg_pos[1] -= 0.25
 
         if self.bg_pos[0] <= -4800:
             self.bg_pos = [0, 0]

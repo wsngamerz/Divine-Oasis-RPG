@@ -12,3 +12,6 @@ coverage.xml
 
 # Divine Oasis
 data/
+
+# virtual envionment
+environment/
